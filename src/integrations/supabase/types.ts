@@ -10,189 +10,20 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "13.0.5"
+    PostgrestVersion: "14.1"
   }
   public: {
     Tables: {
-      email_subscriptions: {
-        Row: {
-          created_at: string
-          email: string
-          id: string
-          subscribed_to: string[]
-          updated_at: string
-        }
-        Insert: {
-          created_at?: string
-          email: string
-          id?: string
-          subscribed_to?: string[]
-          updated_at?: string
-        }
-        Update: {
-          created_at?: string
-          email?: string
-          id?: string
-          subscribed_to?: string[]
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      profiles: {
-        Row: {
-          academic_level: string | null
-          created_at: string
-          current_journey_stage: string | null
-          full_name: string | null
-          id: string
-          intended_field_of_study: string | null
-          profile_photo_url: string | null
-          research_interests: string[] | null
-          skill_tags: string[] | null
-          updated_at: string
-        }
-        Insert: {
-          academic_level?: string | null
-          created_at?: string
-          current_journey_stage?: string | null
-          full_name?: string | null
-          id: string
-          intended_field_of_study?: string | null
-          profile_photo_url?: string | null
-          research_interests?: string[] | null
-          skill_tags?: string[] | null
-          updated_at?: string
-        }
-        Update: {
-          academic_level?: string | null
-          created_at?: string
-          current_journey_stage?: string | null
-          full_name?: string | null
-          id?: string
-          intended_field_of_study?: string | null
-          profile_photo_url?: string | null
-          research_interests?: string[] | null
-          skill_tags?: string[] | null
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      projects: {
-        Row: {
-          created_at: string
-          current_stage: string | null
-          description: string | null
-          field: string | null
-          id: string
-          objective: string | null
-          owner_id: string
-          status: string
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          created_at?: string
-          current_stage?: string | null
-          description?: string | null
-          field?: string | null
-          id?: string
-          objective?: string | null
-          owner_id: string
-          status?: string
-          title: string
-          updated_at?: string
-        }
-        Update: {
-          created_at?: string
-          current_stage?: string | null
-          description?: string | null
-          field?: string | null
-          id?: string
-          objective?: string | null
-          owner_id?: string
-          status?: string
-          title?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      research_stage_progress: {
-        Row: {
-          completion: number
-          created_at: string
-          id: string
-          milestone_due_date: string | null
-          milestone_title: string | null
-          notes: string | null
-          project_id: string
-          stage: string
-          updated_at: string
-        }
-        Insert: {
-          completion?: number
-          created_at?: string
-          id?: string
-          milestone_due_date?: string | null
-          milestone_title?: string | null
-          notes?: string | null
-          project_id: string
-          stage: string
-          updated_at?: string
-        }
-        Update: {
-          completion?: number
-          created_at?: string
-          id?: string
-          milestone_due_date?: string | null
-          milestone_title?: string | null
-          notes?: string | null
-          project_id?: string
-          stage?: string
-          updated_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "research_stage_progress_project_id_fkey"
-            columns: ["project_id"]
-            isOneToOne: false
-            referencedRelation: "projects"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      user_roles: {
-        Row: {
-          id: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Insert: {
-          id?: string
-          role?: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Update: {
-          id?: string
-          role?: Database["public"]["Enums"]["app_role"]
-          user_id?: string
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      has_role: {
-        Args: {
-          _role: Database["public"]["Enums"]["app_role"]
-          _user_id: string
-        }
-        Returns: boolean
-      }
+      [_ in never]: never
     }
     Enums: {
-      app_role: "admin" | "moderator" | "user"
+      [_ in never]: never
     }
     CompositeTypes: {
       [_ in never]: never
@@ -319,8 +150,6 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {
-      app_role: ["admin", "moderator", "user"],
-    },
+    Enums: {},
   },
 } as const
