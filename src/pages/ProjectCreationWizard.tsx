@@ -167,8 +167,8 @@ const ProjectCreationWizard = () => {
       }
 
       // Create project in Supabase
-      const { data: project, error: projectError } = await supabase
-        .from('projects' as any)
+      const { data: project, error: projectError } = await (supabase as any)
+        .from('projects')
         .insert({
           owner_id: user.id,
           title: formData.title,
@@ -177,7 +177,7 @@ const ProjectCreationWizard = () => {
           objective: formData.objective,
           status: 'active',
           current_stage: 'EXPLORATION',
-        } as any)
+        })
         .select()
         .single();
 
@@ -193,9 +193,9 @@ const ProjectCreationWizard = () => {
           milestone_title: stage.description,
         }));
 
-        const { error: stagesError } = await supabase
-          .from('research_stage_progress' as any)
-          .insert(stageInserts as any);
+        const { error: stagesError } = await (supabase as any)
+          .from('research_stage_progress')
+          .insert(stageInserts);
 
         if (stagesError) {
           console.error('Stages error:', stagesError);
